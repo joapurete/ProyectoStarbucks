@@ -112,7 +112,7 @@
                     <input type="hidden" name="action" id="action" value="newProduct">
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Crear</button>
+                        <button type="submit" class="btn btn-primary">Editar</button>
                     </div>
                 </form>
             </div>
