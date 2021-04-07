@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+
+Options All -Indexes
+RewriteEngine on
+ErrorDocument 404 http://localhost/ProyectoCode/controllers/inners/ErrorController/
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^(.*)/(.*) index.php?controller=$1&method=$2
+
+</IfModule>

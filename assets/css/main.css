@@ -1,0 +1,72 @@
+.carousel-inner .carousel-item img {
+    max-height: 700px;
+    height: 100%;
+}
+
+.btn-login {
+    margin-left: 10px;
+}
+
+.nombre-perfil h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.imagen-perfil img {
+    max-height: 300px;
+    height: 100%;
+    max-width: 300px;
+    width: 100%;
+    border-radius: 50% !important;
+}
+
+/* ADMIN */
+
+.line-title-admin-form {
+    position: relative;
+    z-index: 1;
+}
+
+.line-title-admin-form::before {
+    border-top: 2px solid #28a745;
+    content: "";
+    margin: 0 auto;
+    position: absolute;
+    top: 65%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 95%;
+    z-index: -1;
+}
+
+.title-admin-form {
+    font-size: 1.3rem;
+    font-weight: 600;
+    background: #F4F6F9;
+    padding: 0 15px;
+}
+
+.subtitle-admin-form {
+    font-size: 1rem;
+    font-weight: 500;
+    background: #fff;
+    padding: 0 15px;
+}
+
+.form-admin label {
+    color: #6c757d;
+    font-size: .9rem;
+    font-weight: 600 !important;
+}
+
+.form-admin input, .form-admin select {
+    background: #F4F7FA;
+    transition: background ease .15s;
+}
+
+.form-admin input::placeholder {
+    color: #C4BCB5;
+}
