@@ -109,7 +109,7 @@
                             </a>
                         </div>
                     </div>
-                    <input type="hidden" name="action" id="action" value="newProduct">
+                    <input type="hidden" name="action" id="action" value="editProduct">
                     <!-- /.card-body -->
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Editar</button>
