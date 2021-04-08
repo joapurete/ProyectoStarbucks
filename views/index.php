@@ -1,3 +1,36 @@
+<!-- Hero Index -->
+<section class="heroIndex">
+    <!-- Wrapper -->
+    <div class="circle"></div>
+    <!-- Contenido -->
+    <div class="content">
+        <div class="textBox">
+            <h2>Its not just Cofee<br>Its <span id="type1"></span></h2>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum, neque aspernatur animi deleniti voluptatum ea non! Recusandae perspiciatis impedit dignissimos saepe, aliquid possimus laudantium quam ab cumque natus repudiandae a.]</p>
+            <a href="#">Learn More</a>
+        </div>
+        <div class="imgBox">
+            <img src="<?= getUrl() ?>assets/img/heroIndex/img1.png" class="imgHeroIndex" alt="">
+        </div>
+    </div>
+    <!-- Thumbs -->
+    <ul class="thumb">
+        <li><img src="<?= getUrl() ?>assets/img/heroIndex/thumb1.png" onclick="imgSlider('<?= getUrl() ?>assets/img/heroIndex/img1.png');changeCircleColor('#017143')" alt=""></li>
+        <li><img src="<?= getUrl() ?>assets/img/heroIndex/thumb2.png" onclick="imgSlider('<?= getUrl() ?>assets/img/heroIndex/img2.png');changeCircleColor('#eb7495')" alt=""></li>
+        <li><img src="<?= getUrl() ?>assets/img/heroIndex/thumb3.png" onclick="imgSlider('<?= getUrl() ?>assets/img/heroIndex/img3.png');changeCircleColor('#d752b1')" alt=""></li>
+    </ul>
+    <!-- Redes Sociales -->
+    <ul class="sci">
+        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+    </ul>
+</section>
+
+<!-- Main -->
+<main>
+</main>
+
 <!-- Postear -->
 <section class="container mt-5">
     <form action="">
@@ -13,7 +46,6 @@
         </a>
     </form>
 </section>
-
 <!-- Posts -->
 <section class="container mt-5">
     <div class="row row-cols-auto d-flex justify-content-center">

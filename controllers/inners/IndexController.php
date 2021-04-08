@@ -42,6 +42,8 @@ class IndexController extends Controllers implements InterfaceController
     {
         $scriptJs = AutoLoadViews::getScriptSlick();
         $scriptJs .= AutoLoadViews::getScriptLightbox();
+        $scriptJs .= AutoLoadViews::getScriptMagicLine();
+        $scriptJs .= AutoLoadViews::getScriptTypeit();
         return $scriptJs;
     }
     //Head_______________________________________________________________________________________________________________________________________________________
@@ -72,6 +74,10 @@ class IndexController extends Controllers implements InterfaceController
     //Scripts JS y Ajax_______________________________________________________________________________________________________________________________________
     public function getScripts()
     {
-        $this->template->getTemplate('', 'scripts', $this->getScriptJs());
+        $data = array(
+            'scriptJs' => $this->getScriptJs(),
+            'scriptAjax' => null
+        );
+        $this->template->getTemplate('', 'scripts', $data);
     }
 }

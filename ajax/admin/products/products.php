@@ -25,7 +25,8 @@ if ($action == 'newProduct') {
         $idCategoria == false ||
         $precio == false ||
         $stock < 0 ||
-        $foto == false
+        $foto == false ||
+        $action == false
     ) {
         die(json_encode(setMessageArray('error', 'errorInputs')));
     } else {
@@ -68,13 +69,79 @@ if ($action == 'newProduct') {
                 die(json_encode(setMessageArray('error', 'error')));
             }
         }
+        try {
+            $result = $obj->insert();
+        } catch (Exception $e) {
+            $result = setMessageArray('error', 'error');
+        }
+        die(json_encode($result));
     }
-    try {
-        $result = $obj->insert();
-    } catch (Exception $e) {
-        $result = setMessageArray('error', 'error');
+}
+//Editar Producto________________________________________________________________________________________________________________________________________________
+if ($action == 'editProduct') {
+    if (
+        $id == false ||
+        $nombre == false ||
+        $idCategoria == false ||
+        $precio == false ||
+        $stock < 0 ||
+        $action == false
+    ) {
+        die(json_encode(setMessageArray('error', 'errorInputs')));
+    } else {
+        $obj  = new ProductModel();
+        $obj->setId($id);
+        $obj->setNombre($nombre);
+        $obj->setIdCategoria($idCategoria);
+        $obj->setPrecio($precio);
+        $obj->setDescripcion($descripcion);
+        $obj->setStock($stock);
+        $obj->setStatus($status);
+        if ($foto) {
+            $statusImage = checkProfileImage($foto['type'], $foto['size']);
+            if ($statusImage['status'] == 'error') {
+                die(json_encode(setMessageArray($statusImage['status'], $statusImage['type'])));
+            } else if ($statusImage['status'] == 'success') {
+                $dir = array();
+                $dir = getDirImage($foto['name'], '../../../assets/img/products/main/');
+                if (move_uploaded_file($foto['tmp_name'], $dir['dir'])) {
+                    $obj->setFotoPrincipal($dir['dir_db']);
+                    deleteImage($lastImage, '../../../assets/img/products/main/');
+                } else {
+                    die(json_encode(setMessageArray('error', 'errorSaveImage')));
+                }
+            } else {
+                die(json_encode(setMessageArray('error', 'error', 'aa')));
+            }
+        } else {
+            $obj->setFotoPrincipal($lastImage);
+        }
+        if ($fotoSecundaria) {
+            $statusImage = checkProfileImage($fotoSecundaria['type'], $fotoSecundaria['size']);
+            if ($statusImage['status'] == 'error') {
+                die(json_encode(setMessageArray($statusImage['status'], $statusImage['type'])));
+            } else if ($statusImage['status'] == 'success') {
+                $dir = array();
+                $dir = getDirImage($fotoSecundaria['name'], '../../../assets/img/products/secondary/');
+                if (move_uploaded_file($fotoSecundaria['tmp_name'], $dir['dir'])) {
+                    $obj->setFotoSecundaria($dir['dir_db']);
+                    deleteImage($lastSecondaryImage, '../../../assets/img/products/secondary/');
+                } else {
+                    die(json_encode(setMessageArray('error', 'errorSaveImage')));
+                }
+            } else {
+                die(json_encode(setMessageArray('error', 'error', 'ss')));
+            }
+        } else {
+            $obj->setFotoSecundaria($lastSecondaryImage);
+        }
+        try {
+            $result = $obj->update();
+        } catch (Exception $e) {
+            $result = setMessageArray('error', 'error', 'ff');
+        }
+        die(json_encode($result));
     }
-    die(json_encode($result));
 }
 //Eliminar Producto________________________________________________________________________________________________________________________________________________
 if ($action == 'deleteProduct') {

@@ -40,7 +40,7 @@
                                     <div class="btn-group btn-group-sm">
                                         <a href="<?= URL; ?>Admin/viewProduct&id=<?= $row['id'] ?>" class="btn btn-primary"><i class="fas fa-eye" style="color: #fff;"></i></a>
                                         <a href="<?= URL; ?>Admin/editProduct&id=<?= $row['id'] ?>" class="btn btn-warning"><i class="fas fa-pen"></i></a>
-                                        <a data-image="<?= $row['foto'] ?>" href="#" class="btn btn-danger btn-delete-product" data-id="<?= $row['id'] ?>" data-action="<?= URL; ?>ajax/admin/products/products.php"><i class="fas fa-trash"></i></a>
+                                        <a data-image="<?= $row['foto'] ?>" data-secondaryImage="<?= $row['fotoSecundaria'] ?>" href="#" class="btn btn-danger btn-delete-product" data-id="<?= $row['id'] ?>" data-action="<?= URL; ?>ajax/admin/products/products.php"><i class="fas fa-trash"></i></a>
                                     </div>
                                 </td>
                             </tr>

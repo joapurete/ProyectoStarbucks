@@ -349,6 +349,41 @@ class AdminController extends Controllers implements InterfaceController
         $this->getFooter();
         $this->getScripts('products/products');
     }
+    //Editar Producto____________________________________________________________________________________________________________________________________________
+    public function editProduct()
+    {
+        $this->validatePermission('productos');
+        $this->getHead();
+        $this->getHeader();
+        if (!empty($_GET['id'])) {
+            $id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT) == false ? null : $_GET['id'];
+            if ($id == null) {
+                goto error;
+            }
+            $this->model = new ProductModel();
+            $this->model->setId($id);
+            $product = $this->model->selectById();
+            if (!isset($product['nombre']) || !isset($product['id'])) {
+                goto error;
+            } else {
+                $this->model = new CategoryModel();
+                $data['categories'] = $this->model->select();
+                if (!isset($data['categories'])) {
+                    goto error;
+                } else {
+                    $data['product'] = $product;
+                    $this->getBody('editProduct', $data, 'products');
+                }
+            }
+        } else {
+            error:
+            $error = 'No se ha Encontrado Ningun Producto';
+            echo $error;
+            //aqui incluimos la pag error del admin aun no hecha
+        }
+        $this->getFooter();
+        $this->getScripts('products/products');
+    }
     //Ver Producto_______________________________________________________________________________________________________________________________________________
     public function viewProduct()
     {

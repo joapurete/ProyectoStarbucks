@@ -128,8 +128,25 @@ class AutoLoadViews
     {
         ob_start(); ?>
         <script src="<?= URL ?>assets/js/libs/adminlte/adminlte.min.js"></script>
-<?php $scriptAdminlte = ob_get_clean();
+    <?php $scriptAdminlte = ob_get_clean();
         return $scriptAdminlte;
+    }
+    //Magic Line__________________________________________________________________________________________________________________________________________________
+    static function getScriptMagicLine()
+    {
+        ob_start(); ?>
+        <script src="<?= URL ?>assets/js/libs/magic-line/magicline.min.js"></script>
+        <script src="<?= URL ?>assets/js/libs/magic-line/anime.min.js"></script>
+    <?php $scriptMagicLine = ob_get_clean();
+        return $scriptMagicLine;
+    }
+    //Typeit__________________________________________________________________________________________________________________________________________________
+    static function getScriptTypeit()
+    {
+        ob_start(); ?>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/typeit/7.0.4/typeit.min.js"></script>
+<?php $scriptTypeit = ob_get_clean();
+        return $scriptTypeit;
     }
     //Template General_____________________________________________________________________________________________________________________________________________
     static function getTemplateGeneral()

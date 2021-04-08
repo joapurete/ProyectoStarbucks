@@ -242,10 +242,10 @@ class UserModel extends ParentModel
             if ($result) {
                 $result = setMessageArray('success', 'success');
             } else {
-                $result = setMessageArray('error', 'error');
+                $result = setMessageArray('error', 'error', $sql);
             }
         } catch (Exception $e) {
-            $result = setMessageArray('error', 'error');
+            $result = setMessageArray('error', 'error', $sql);
         }
         return $result;
     }

@@ -1,8 +1,3 @@
-<!-- URL Raiz -->
-<script>
-    URL = <?= URL ?>
-</script>
-
 <!-- Jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -25,6 +20,17 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
 
+
+<script type="text/javascript">
+    function imgSlider(url) {
+        document.querySelector('.imgHeroIndex').src = url;
+    }
+
+    function changeCircleColor(color) {
+        const circle = document.querySelector('.circle');
+        circle.style.background = color;
+    }
+</script>
 </body>
 
 </html>

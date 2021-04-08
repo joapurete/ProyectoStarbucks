@@ -159,6 +159,31 @@ class ProductModel extends ParentModel
         }
         return $product;
     }
+    //Actualizar____________________________________________________________________________________________________________________________________________________
+    public function update()
+    {
+        $id = $this->getId();
+        $nombre = $this->getNombre();
+        $idCategoria = $this->getIdCategoria();
+        $precio = $this->getPrecio();
+        $descripcion = $this->getDescripcion() == '' ? NULL : $this->getDescripcion();
+        $stock = $this->getStock();
+        $foto = $this->getFotoPrincipal() == '' ? NULL : $this->getFotoPrincipal();
+        $fotoSecundaria = $this->getFotoSecundaria() == '' ? NULL : $this->getFotoSecundaria();
+        $status = $this->getStatus();
+        try {
+            $sql = "UPDATE `productos` SET `nombre` = '$nombre', `idCategoria` = '$idCategoria', `precio` = '$precio', `descripcion` = '$descripcion', `stock` = '$stock', `fotoPrincipal` = '$foto', `fotoSecundaria` = '$fotoSecundaria', `status` = '$status',  editado = NOw() WHERE `id` = $id";
+            $result = $this->db->query($sql);
+            if ($result) {
+                $result = setMessageArray('success', 'success');
+            } else {
+                $result = setMessageArray('error', 'error', $sql);
+            }
+        } catch (Exception $e) {
+            $result = setMessageArray('error', 'error'. 'rr');
+        }
+        return $result;
+    }
     //Eliminar_______________________________________________________________________________________________________________________________________________________
     public function delete()
     {

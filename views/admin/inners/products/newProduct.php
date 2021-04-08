@@ -65,7 +65,7 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="descripcion">Descripcion:</label>
-                                    <textarea required class="form-control" id="summernote" id="descripcion" name="descripcion"></textarea>
+                                    <textarea class="form-control" id="summernote" id="descripcion" name="descripcion"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -100,13 +100,17 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <a class="preview-image" href="<?= getUrl() . 'assets/img/products/default.jpg' ?>" data-lightbox="newProductImage">
-                                <img class="preview-image" src="<?= getUrl() . 'assets/img/products/default.jpg' ?>" alt="Imagen Principal" loading="lazy" style="height: 120px; width: 220px; object-fit: cover; max-width: 100%">
-                            </a>
-                            <a class="preview-image" href="<?= getUrl() . 'assets/img/products/default.jpg' ?>" data-lightbox="newProductImage">
-                                <img class="preview-image" src="<?= getUrl() . 'assets/img/products/default.jpg' ?>" alt="Imagen Principal" loading="lazy" style="height: 120px; width: 220px; object-fit: cover; max-width: 100%">
-                            </a>
+                        <div class="row">
+                            <div class="form-group">
+                                <a class="preview-image" href="<?= getUrl() . 'assets/img/products/default.jpg' ?>" data-lightbox="newProductImage">
+                                    <img class="preview-image" src="<?= getUrl() . 'assets/img/products/default.jpg' ?>" alt="Imagen Principal" loading="lazy" style="height: 120px; width: 220px; object-fit: cover; max-width: 100%">
+                                </a>
+                            </div>
+                            <div class="form-group">
+                                <a class="preview-image" href="<?= getUrl() . 'assets/img/products/default.jpg' ?>" data-lightbox="newProductImage">
+                                    <img class="preview-image" src="<?= getUrl() . 'assets/img/products/default.jpg' ?>" alt="Imagen Principal" loading="lazy" style="height: 120px; width: 220px; object-fit: cover; max-width: 100%">
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <input type="hidden" name="action" id="action" value="newProduct">

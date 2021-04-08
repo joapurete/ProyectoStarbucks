@@ -23,13 +23,11 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="<?= URL; ?>assets/css/normalize.css">
+    <link rel="stylesheet" href="<?= URL; ?>assets/css/styles.css">
     <?php if (isset($data['linkCss'])) {
         echo $data['linkCss'];
     } ?>
     <link rel="stylesheet" href="<?= URL; ?>assets/css/main.css">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 

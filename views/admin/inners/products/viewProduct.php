@@ -61,7 +61,7 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="descripcion">Descripcion:</label>
-                                    <textarea class="form-control viewText" id="summernote" id="descripcion" name="descripcion"><?= $data['product']['descripcion'] ?></textarea>
+                                    <textarea class="form-control summernote-disable" id="summernote" id="descripcion" name="descripcion"><?= $data['product']['descripcion'] ?></textarea>
                                 </div>
                             </div>
                         </div>

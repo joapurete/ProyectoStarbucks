@@ -11,7 +11,7 @@ $(document).ready(function () {
     let previewSecondaryImage = $(".preview-image")[4];
     //Eventos_____________________________________________________________________________________________________________________________________________________
     formNewProduct.on('submit', newProduct);
-    /*   formEditProduct.on("submit", editProduct); */
+    formEditProduct.on("submit", editProduct);
     btnDeleteProduct.on('click', deleteProduct);
     //Solución Btn Elimnar_________________________________________________________________________________________________________________________________________
     $("#example1").bind("DOMSubtreeModified", function () {
@@ -78,6 +78,13 @@ $(document).ready(function () {
                             location.reload();
                         });
                     }
+                    if (result == "errorInputs") {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Debe Completar Todos los Campos!",
+                        });
+                    }
                     if (result == "errorImage") {
                         Swal.fire({
                             icon: "error",
@@ -99,11 +106,92 @@ $(document).ready(function () {
                             text: "Error Subiendo Imagen!",
                         });
                     }
+                    if (result == "error") {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Hubo un error Inesperado! Vuelva mas Tarde",
+                        });
+                    }
+                },
+            });
+        }
+    }
+    //Editar Producto_______________________________________________________________________________________________________________________________________________
+    function editProduct(e) {
+        e.preventDefault();
+        var data = new FormData(this);
+        let nombre = data.get("nombre").trim();
+        let categoria = data.get("categoria").trim();
+        let precio = data.get("precio").trim();
+        let stock = data.get("stock").trim();
+        if (
+            nombre.trim().length <= 0 ||
+            categoria.trim().length <= 0 ||
+            precio.trim().length <= 0 ||
+            stock.trim().length <= 0
+        ) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Debe Completar Todos los Campos!",
+            });
+        } else {
+            const regex = /^[0-9]*$/;
+            const onlyNumbers = regex.test(precio);
+            if (onlyNumbers == false) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Digite un Precio Válido!",
+                });
+                return;
+            }
+            $.ajax({
+                type: $(this).attr("method"),
+                url: $(this).attr("action"),
+                data: data,
+                dataType: "json",
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    let result = response["type"];
+                    if (result == "success") {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Genial",
+                            text: "Se ha Creado el Producto!",
+                        }).then((result) => {
+                            location.reload();
+                        });
+                    }
                     if (result == "errorInputs") {
                         Swal.fire({
                             icon: "error",
                             title: "Oops...",
                             text: "Debe Completar Todos los Campos!",
+                        });
+                    }
+                    if (result == "errorImage") {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Imagen no Valida!",
+                        });
+                    }
+                    if (result == "largeImage") {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "La imagen deben ser inferior a 1MB!",
+                        });
+                    }
+                    if (result == "errorSaveImage") {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Error Subiendo Imagen!",
                         });
                     }
                     if (result == "error") {
